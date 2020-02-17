@@ -1,5 +1,5 @@
 /*
- * File:   LAB_4_M.c
+ * File:   LAB_4_E.c
  * Author: Miguel García
  * Carné: 17560
  * Electrónica digital 2

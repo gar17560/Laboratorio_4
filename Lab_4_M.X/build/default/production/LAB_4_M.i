@@ -2692,9 +2692,7 @@ void init_serial(void);
 
 uint8_t pot1;
 uint8_t pot2;
-uint8_t mandar;
 uint8_t recibir1;
-uint8_t recibir2;
 
 void config(void);
 
@@ -2712,9 +2710,22 @@ void main(void) {
         pot2 = spiRead();
         _delay((unsigned long)((10)*(4000000/4000.0)));
 
+        TXREG = pot1;
+        while(PIR1bits.TXIF == 0){
+        }
 
+        TXREG = pot2;
+        while(PIR1bits.TXIF == 0){
+        }
+
+
+        if (PIR1bits.RCIF == 1){
+            recibir1 = RCREG;
+        }
+
+        _delay((unsigned long)((100)*(4000000/4000.0)));
         PORTD = pot2;
-        PORTB = pot1;
+        PORTB = recibir1;
     }
 
     return;
